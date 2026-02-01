@@ -171,11 +171,10 @@ inline std::string getenv(const char* const var_name) {
  */
 [[nodiscard]] inline int system_suppressed(const char* const cmd) {
   if (!cmd) return 1;
-  if (!std::strcmp(cmd, "clear"))
 #ifdef _WIN32
-    return std::system("cls");
+    if (!std::strcmp(cmd, "clear")) return std::system("cls");
 #else // ^^^ _WIN32 || !_WIN32 vvv
-    return std::system("clear");
+    if (!std::strcmp(cmd, "clear")) return std::system("clear");
 #endif // _WIN32
 
 #ifdef _WIN32
