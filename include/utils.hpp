@@ -152,9 +152,8 @@ inline std::string getenv(const char* const var_name) {
  */
 [[nodiscard]] inline int system(const char* const cmd) {
   if (!cmd) return 1;
-  if (!std::strcmp(cmd, "clear"))
 #ifdef _WIN32
-    return std::system("cls");
+  if (!std::strcmp(cmd, "clear")) return std::system("cls");
 #endif // _WIN32
   return std::system(cmd);
 }
