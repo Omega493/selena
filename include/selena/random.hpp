@@ -40,7 +40,10 @@ public:
    */
   template<typename T>
   static T random(const std::vector<T>& vec) {
-    if (vec.empty()) return {};
+    if (vec.empty()) {
+      return {};
+    }
+
     std::uniform_int_distribution<size_t> distribution{ 0, vec.size() - 1 };
     return vec[distribution(_impl_prng_engine())];
   }
@@ -53,17 +56,27 @@ public:
    */
   template<typename T>
   static std::vector<T> random(const std::vector<T>& vec, const size_t count) {
-    if (vec.empty()) return {};
-    if (!count) return {};
-    if (count == 1) return { random(vec) };
+    if (vec.empty()) {
+      return {};
+    }
+
+    if (!count) {
+      return {};
+    }
+    
+    if (count == 1) {
+      return { random(vec) };
+    }
 
     std::vector<T> ret_vec{};
-    ret_vec.reserve(count);
+    (void)ret_vec.reserve(count);
 
     std::uniform_int_distribution<size_t> distribution{ 0, vec.size() - 1 };
     std::mt19937_64& engine{ _impl_prng_engine() };
 
-    for (size_t i{ 0 }; i < count; ++i) ret_vec.push_back(vec[distribution(engine)]);
+    for (size_t i{ 0 }; i < count; ++i) {
+      (void)ret_vec.push_back(vec[distribution(engine)]);
+    }
     return ret_vec;
   }
 
@@ -74,7 +87,10 @@ public:
    */
   template<typename T, size_t N>
   static T random(const std::array<T, N>& arr) {
-    if (arr.empty()) return {};
+    if (arr.empty()) {
+      return {};
+    }
+
     std::uniform_int_distribution<size_t> distribution{ 0, arr.size() - 1 };
     return arr[distribution(_impl_prng_engine())];
   }
@@ -86,14 +102,22 @@ public:
    */
   template<size_t Count, typename T, size_t N>
   static std::array<T, Count> random(const std::array<T, N>& arr) {
-    if (arr.empty()) return {};
-    if constexpr (!Count) return {};
+    if (arr.empty()) {
+      return {};
+    }
+    
+    if constexpr (!Count) {
+      return {};
+    }
 
     std::array<T, Count> ret_arr{};
     std::uniform_int_distribution<size_t> distribution{ 0, arr.size() - 1 };
     std::mt19937_64& engine{ _impl_prng_engine() };
 
-    for (size_t i{ 0 }; i < Count; ++i) ret_arr[i] = arr[distribution(engine)];
+    for (size_t i{ 0 }; i < Count; ++i) {
+      ret_arr[i] = arr[distribution(engine)];
+    }
+
     return ret_arr;
   }
 
@@ -130,7 +154,10 @@ public:
    */
   template<typename T>
   static T random(const std::vector<T>& vec) {
-    if (vec.empty()) return {};
+    if (vec.empty()) {
+      return {};
+    }
+
     std::uniform_int_distribution<size_t> distribution{ 0, vec.size() - 1 };
     return vec[distribution(_impl_trng_engine())];
   }
@@ -143,17 +170,28 @@ public:
    */
   template<typename T>
   static std::vector<T> random(const std::vector<T>& vec, const size_t count) {
-    if (vec.empty()) return {};
-    if (!count) return {};
-    if (count == 1) return { random(vec) };
+    if (vec.empty()) {
+      return {};
+    }
+
+    if (!count) {
+      return {};
+    }
+
+    if (count == 1) {
+      return { random(vec) };
+    }
 
     std::vector<T> ret_vec{};
-    ret_vec.reserve(count);
+    (void)ret_vec.reserve(count);
 
     std::uniform_int_distribution<size_t> distribution{ 0, vec.size() - 1 };
     std::random_device& engine{ _impl_trng_engine() };
 
-    for (size_t i{ 0 }; i < count; ++i) ret_vec.push_back(vec[distribution(engine)]);
+    for (size_t i{ 0 }; i < count; ++i) {
+      (void)ret_vec.push_back(vec[distribution(engine)]);
+    }
+
     return ret_vec;
   }
 
@@ -164,7 +202,10 @@ public:
    */
   template<typename T, size_t N>
   static T random(const std::array<T, N>& arr) {
-    if (arr.empty()) return {};
+    if (arr.empty()) {
+      return {};
+    }
+
     std::uniform_int_distribution<size_t> distribution{ 0, arr.size() - 1 };
     return arr[distribution(_impl_trng_engine())];
   }
@@ -176,14 +217,22 @@ public:
    */
   template<size_t Count, typename T, size_t N>
   static std::array<T, Count> random(const std::array<T, N>& arr) {
-    if (arr.empty()) return {};
-    if constexpr (!Count) return {};
+    if (arr.empty()) {
+      return {};
+    }
+
+    if constexpr (!Count) {
+      return {};
+    }
 
     std::array<T, Count> ret_arr{};
     std::uniform_int_distribution<size_t> distribution{ 0, arr.size() - 1 };
     std::random_device& engine{ _impl_trng_engine() };
 
-    for (size_t i{ 0 }; i < Count; ++i) ret_arr[i] = arr[distribution(engine)];
+    for (size_t i{ 0 }; i < Count; ++i) {
+      ret_arr[i] = arr[distribution(engine)];
+    }
+
     return ret_arr;
   }
 

@@ -4,7 +4,7 @@ A small collection of C++ utilities.
 
 ## Usage
 
-All code provided here is header-only. They don't depend on one another or some other library, apart from C's and C++'s standard libraries. So, you should be able to just drop this in your project, do the usual `#include` and call it a day!
+All code provided here is header-only. They do depend on one-another, but currently, they don't depend on some third-party library. You should be able to just drop the entire "include/selena" folder on your project and call it a day!
 
 ## Contributing
 
