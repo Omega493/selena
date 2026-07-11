@@ -1,5 +1,8 @@
 # selena
 
+> [!CAUTION]
+> Repository has been permanently moved to [Codeberg](https://codeberg.org/Omega493/selena). This one here is for archive purposes. Please visit the given link instead.
+
 A small collection of C++ utilities.
 
 ## Usage
